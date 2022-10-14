@@ -15,10 +15,10 @@ export default function NavBar() {
             Home
           </a>
         </Link>
-        <Link href="/Favorite">
+        <Link href="/favorite">
           <a
             className={
-              router.pathname === "/Favorite" ? `${styles.active}` : ""
+              router.pathname === "/favorite" ? `${styles.active}` : ""
             }>
             Favorite
           </a>
