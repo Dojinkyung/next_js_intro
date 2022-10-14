@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Seo from "../components/Seo";
+import styles from "../styles/index.module.css";
 
 export default function Home({ results }) {
   const router = useRouter();
@@ -8,12 +9,12 @@ export default function Home({ results }) {
     router.push(`/movies/${title}/${id}`);
   };
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Seo title="Home" />
       {results?.map((movie) => (
         <div
           onClick={() => onClick(movie.id, movie.original_title)}
-          className="movie"
+          className={styles.movie}
           key={movie.id}>
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
           <h4>
