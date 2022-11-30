@@ -106,6 +106,11 @@
   dependencies:
     "tslib" "^2.4.0"
 
+"@types/debounce@^1.2.1":
+  "integrity" "sha512-epMsEE85fi4lfmJUH/89/iV/LI+F5CvNIvmgs5g5jYFPfhO2S/ae8WSsLOKWdwtoaZw9Q2IhJ4tQ5tFCcS/4HA=="
+  "resolved" "https://registry.npmjs.org/@types/debounce/-/debounce-1.2.1.tgz"
+  "version" "1.2.1"
+
 "@types/json5@^0.0.29":
   "integrity" "sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ=="
   "resolved" "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
