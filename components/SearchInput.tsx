@@ -1,26 +1,21 @@
-import styles from "../styles/searchInput.module.css";
-import { useMemo, useState } from "react";
-import debounce from "debounce";
+import styles from '../styles/searchInput.module.css'
+import React, { useMemo, useState } from 'react'
+import debounce from 'debounce'
 
 export default function SearchInput() {
-  const [searchBar, setSearchBar] = useState(false);
+  const [searchBar, setSearchBar] = useState(false)
   const handleSearchbar = () => {
-    setSearchBar((prev) => !prev);
-  };
-  const onSubmit = (event) => {
-    event.preventDefault();
-  };
+    setSearchBar((prev) => !prev)
+  }
   const debouncedResults = useMemo(() => {
-    const handleChange = (event) => {
-      event.target.value.trim();
-    };
-    return debounce(handleChange, 800);
-  }, []);
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      event.target.value.trim()
+    }
+    return debounce(handleChange, 800)
+  }, [])
   return (
     <div className={styles.searchForm}>
-      <form
-        onSubmit={onSubmit}
-        className={!searchBar ? `${styles.none}` : `${styles.form}`}>
+      <form className={!searchBar ? `${styles.none}` : `${styles.form}`}>
         <div>
           <input
             className={styles.input}
@@ -37,9 +32,10 @@ export default function SearchInput() {
         className={
           searchBar ? `${styles.rotate}` : `${styles.searchbardownBTN}`
         }
-        onClick={handleSearchbar}>
+        onClick={handleSearchbar}
+      >
         <img src="../arrow-down-svgrepo-com.svg" />
       </button>
     </div>
-  );
+  )
 }
