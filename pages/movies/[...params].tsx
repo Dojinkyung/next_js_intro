@@ -23,7 +23,7 @@ export default function Detail({ results }: Props) {
 
 export async function getServerSideProps({ params: { params } }: any) {
   const results = await (
-    await axios.get(`http://localhost:3000/api/movies/${params[1]}`)
+    await axios.get(`http://localhost:3000/api/movies/details/${params[1]}`)
   ).data
   return {
     props: {
