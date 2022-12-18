@@ -17,9 +17,7 @@ export default function Home({ results }: Props) {
 }
 
 export async function getServerSideProps() {
-  const { results } = await (
-    await axios.get(`http://localhost:3000/api/movies`)
-  ).data
+  const { results } = await (await axios.get(`http://localhost:3000/api/movies`)).data
   return {
     props: {
       results,

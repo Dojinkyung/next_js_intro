@@ -15,9 +15,9 @@ export const Items = ({ results }: Props) => {
     <>
       {results?.map((movie: IResult) => (
         <div
+          key={movie.id}
           onClick={() => onClick({ id: movie.id, title: movie.original_title })}
           className={styles.movie}
-          key={movie.id}
         >
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
           <h4>

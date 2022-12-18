@@ -1,4 +1,4 @@
-import Seo from "../components/Seo";
+import Seo from '../components/Seo'
 
 export default function Favorite() {
   return (
@@ -6,5 +6,5 @@ export default function Favorite() {
       <Seo title="favorite" />
       <h1>Favorite</h1>
     </div>
-  );
+  )
 }

@@ -25,33 +25,19 @@ export default function SearchInput() {
 
   useEffect(() => {
     getData(search)?.then((res) => setMovies(res.data.results))
-    console.log(movies)
   }, [search])
-
+  console.log(movies)
   return (
     <div className={styles.searchForm}>
-      <form
-        className={!searchBar ? `${styles.none}` : `${styles.form}`}
-        onSubmit={handleSubmitBtn}
-      >
+      <form className={!searchBar ? `${styles.none}` : `${styles.form}`} onSubmit={handleSubmitBtn}>
         <div>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="Search Movie."
-            onChange={handleChange}
-          />
+          <input className={styles.input} type="text" placeholder="Search Movie." onChange={handleChange} />
           <button className={styles.button} type="submit">
             검색
           </button>
         </div>
       </form>
-      <button
-        className={
-          searchBar ? `${styles.rotate}` : `${styles.searchbardownBTN}`
-        }
-        onClick={handleSearchbar}
-      >
+      <button className={searchBar ? `${styles.rotate}` : `${styles.searchbardownBTN}`} onClick={handleSearchbar}>
         <img src="../arrow-down-svgrepo-com.svg" />
       </button>
     </div>
