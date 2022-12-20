@@ -2,12 +2,13 @@ import styles from '../styles/searchInput.module.css'
 import React, { useEffect, useMemo, useState } from 'react'
 import debounce from 'debounce'
 import getData from '../service/getData'
-import { IResult } from '../types/result'
+import { useRecoilState } from 'recoil'
+import { movieState } from '../recoil/states'
 
 export default function SearchInput() {
   const [searchBar, setSearchBar] = useState(false)
   const [search, setSearch] = useState<string | undefined>()
-  const [movies, setMovies] = useState<IResult[]>()
+  const [movies, setMovies] = useRecoilState(movieState)
   const handleSearchbar = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     setSearchBar((prev) => !prev)
@@ -25,7 +26,7 @@ export default function SearchInput() {
 
   useEffect(() => {
     getData(search)?.then((res) => setMovies(res.data.results))
-  }, [search])
+  }, [search, setMovies])
   console.log(movies)
   return (
     <div className={styles.searchForm}>
