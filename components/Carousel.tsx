@@ -1,15 +1,18 @@
 import styles from '../styles/carousel.module.css'
 import { useEffect, useState } from 'react'
-
-export const Carousel = (props) => {
-  const { children } = props
+import { Items } from './Items'
+import { IResult } from '../types/result'
+interface Props {
+  results: Array<IResult>
+}
+export const Carousel = ({ results }: Props) => {
   const show = 4
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [length, setLength] = useState(children.length)
+  const [length, setLength] = useState(results.length)
 
   useEffect(() => {
-    setLength(children.length)
-  }, [children.length])
+    setLength(results.length)
+  }, [results.length])
   const next = () => {
     if (currentIndex < length - show) {
       setCurrentIndex((prevState) => prevState + 1)
@@ -20,7 +23,6 @@ export const Carousel = (props) => {
       setCurrentIndex((prevState) => prevState - 1)
     }
   }
-
   return (
     <div className={styles.carouselContainer}>
       <div className={styles.carouselWrapper}>
@@ -36,7 +38,7 @@ export const Carousel = (props) => {
         )}
         <div className={styles.carouselContentWrapper}>
           <div className={styles.carouselContent} style={{ transform: `translateX(-${currentIndex * (100 / show)}%)` }}>
-            {children}
+            <Items results={results} />
           </div>
         </div>
       </div>

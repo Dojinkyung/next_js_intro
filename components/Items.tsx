@@ -22,7 +22,7 @@ export const Items = ({ results }: Props) => {
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
           <h4>
             <Link href={`/movies/${movie.original_title}/${movie.id}`}>
-              <a>{movie.original_title}</a>
+              <a className={styles.title}>{movie.original_title}</a>
             </Link>
           </h4>
         </div>
