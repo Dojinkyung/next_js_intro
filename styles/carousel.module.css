@@ -1,0 +1,59 @@
+.carouselContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.carouselWrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.carouselContentWrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.carouselContent {
+  display: flex;
+  transition: all 250ms linear;
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+  list-style: none;
+}
+
+.carouselContent::-webkit-scrollbar, .carouselContent::-webkit-scrollbar {
+  display: none;
+}
+
+.carouselContent > * {
+  flex-shrink: 0;
+  flex-grow: 1;
+  width: calc(100% / 4);
+}
+.leftArrow, .rightArrow{
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  background-color: white;
+  border: 1px solid #ddd;
+}
+
+.leftArrow {
+  left: 24px;
+}
+
+.rightArrow {
+  right: 24px;
+}
+@media (hover: none) and (pointer: coarse) {
+  .leftArrow, .rightArrow {
+      display: none;
+  }
+}
