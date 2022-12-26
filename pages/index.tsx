@@ -12,7 +12,7 @@ interface Props {
 }
 export default function Home({ results }: Props) {
   const [movies] = useRecoilState(movieState)
-
+  console.log(movies)
   return (
     <div className={styles.container}>
       <Seo title="Home" />
@@ -20,7 +20,9 @@ export default function Home({ results }: Props) {
         <Carousel results={results} />
       </div>
       <h2>Search Results</h2>
-      <div className={styles.searchResults}>{movies ? <Items results={movies} /> : null}</div>
+      <div className={styles.searchResults}>
+        {movies.length > 0 ? <Items results={movies} /> : <div>no results</div>}
+      </div>
     </div>
   )
 }

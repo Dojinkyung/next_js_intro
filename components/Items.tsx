@@ -20,11 +20,13 @@ export const Items = ({ results }: Props) => {
           className={styles.movie}
         >
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-          <h4>
-            <Link href={`/movies/${movie.original_title}/${movie.id}`}>
-              <a className={styles.title}>{movie.original_title}</a>
-            </Link>
-          </h4>
+          <div className={styles.hoverName}>
+            <h4>
+              <Link href={`/movies/${movie.original_title}/${movie.id}`}>
+                <a className={styles.title}>{movie.original_title}</a>
+              </Link>
+            </h4>
+          </div>
         </div>
       ))}
     </>
