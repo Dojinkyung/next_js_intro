@@ -38,7 +38,11 @@ export const Carousel = ({ results }: Props) => {
         )}
         <div className={styles.carouselContentWrapper}>
           <div className={styles.carouselContent} style={{ transform: `translateX(-${currentIndex * (100 / show)}%)` }}>
-            <Items results={results} />
+            {results ? (
+              results.map((movie) => <Items key={movie.id} movie={movie} />)
+            ) : (
+              <div className={styles.noResults}>No Results</div>
+            )}
           </div>
         </div>
       </div>

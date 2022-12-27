@@ -1,7 +1,10 @@
 import { atom } from 'recoil'
-import { IResult } from '../types/result'
 
-export const movieState = atom<IResult[]>({
-  key: 'movieState',
-  default: [],
+export const searchState = atom<string>({
+  key: 'searchState',
+  default: '',
+})
+export const pageState = atom<number>({
+  key: 'pageState',
+  default: 1,
 })

@@ -1,14 +1,13 @@
 import styles from '../styles/searchInput.module.css'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import debounce from 'debounce'
-import getData from '../service/getData'
 import { useRecoilState } from 'recoil'
-import { movieState } from '../recoil/states'
+import { pageState, searchState } from '../recoil/states'
 
 export default function SearchInput() {
   const [searchBar, setSearchBar] = useState(false)
-  const [search, setSearch] = useState<string | undefined>()
-  const [movies, setMovies] = useRecoilState(movieState)
+  const [, setSearch] = useRecoilState(searchState)
+  const [, setPageNumber] = useRecoilState(pageState)
   const handleSearchbar = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     setSearchBar((prev) => !prev)
@@ -20,14 +19,11 @@ export default function SearchInput() {
     const debounceSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
       setSearch(event.target.value.trim())
+      setPageNumber(1)
     }
     return debounce(debounceSearch, 800)
-  }, [setSearch])
+  }, [setPageNumber, setSearch])
 
-  useEffect(() => {
-    getData(search)?.then((res) => setMovies(res.data.results))
-  }, [search, setMovies])
-  console.log(movies)
   return (
     <div className={styles.searchForm}>
       <form className={!searchBar ? `${styles.none}` : `${styles.form}`} onSubmit={handleSubmitBtn}>
