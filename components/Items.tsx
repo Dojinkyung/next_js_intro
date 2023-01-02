@@ -13,7 +13,11 @@ export const Items = ({ movie }: Props) => {
   }
   return (
     <div key={movie.id} onClick={() => onClick({ id: movie.id, title: movie.original_title })} className={styles.movie}>
-      <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+      {movie.poster_path !== null ? (
+        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+      ) : (
+        <div className={styles.noImg}>{movie.title}</div>
+      )}
       <div className={styles.hoverName}>
         <h4>
           <Link href={`/movies/${movie.original_title}/${movie.id}`}>
