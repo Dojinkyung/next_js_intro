@@ -1,10 +1,10 @@
 import { atom } from 'recoil'
 
 export const searchState = atom<string>({
-  key: 'searchState',
+  key: '#searchState',
   default: '',
 })
 export const pageState = atom<number>({
-  key: 'pageState',
+  key: '#pageState',
   default: 1,
 })

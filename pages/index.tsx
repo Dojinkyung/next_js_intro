@@ -17,8 +17,8 @@ export default function Home({ results }: Props) {
   const [pageNumber, setPageNumber] = useRecoilState(pageState)
   const [search] = useRecoilState(searchState)
   const observer = useRef<IntersectionObserver | null>(null)
-  const { movies, hasMore, totalResult } = useSearchMovie(search, pageNumber)
 
+  const { movies, hasMore, totalResult } = useSearchMovie(search, pageNumber)
   const lastMovieElementRef = useCallback(
     (node: HTMLElement | null) => {
       if (observer.current) observer.current.disconnect()
@@ -37,9 +37,10 @@ export default function Home({ results }: Props) {
       <div className={styles.carousel}>
         <Carousel results={results} />
       </div>
-      <h2 className={styles.search}>Search Results ({movies ? totalResult : 0})</h2>
+
+      <h2 className={styles.search}>Search Results ({totalResult})</h2>
       <ul className={styles.searchResults}>
-        {movies ? (
+        {movies.length > 0 ? (
           movies.map((movie, index) => {
             if (movies.length === index + 1) {
               return (

@@ -6,6 +6,7 @@ export interface IRootObject {
 }
 
 export interface IResult {
+  homepage: string
   adult: boolean
   backdrop_path: string
   genre_ids: number[]
@@ -18,6 +19,16 @@ export interface IResult {
   release_date: string
   title: string
   video: boolean
+  runtime: number
+  status: string
   vote_average: number
   vote_count: number
+  genres: Igenres[]
+}
+export interface Igenres {
+  id: number
+  name: string
+}
+export interface IParams {
+  [id: number, title: string]
 }

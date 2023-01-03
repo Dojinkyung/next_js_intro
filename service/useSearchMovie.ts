@@ -7,6 +7,7 @@ const useSearchMovie = (search: string, page: number) => {
   const [movies, setMovies] = useState<IResult[]>([])
   const [hasMore, setHasMore] = useState(true)
   const [totalResult, setTotalResult] = useState<number>(0)
+
   const { data } = useQuery<IRootObject>(
     ['getData', search, page],
     () => getData(search, page).then((res) => res.data),
@@ -17,13 +18,13 @@ const useSearchMovie = (search: string, page: number) => {
       cacheTime: Infinity,
     },
   )
-
+  console.log(movies)
   useEffect(() => {
     setMovies([])
     setTotalResult(0)
   }, [search])
   useEffect(() => {
-    if (data && search.length > 0) {
+    if (data !== undefined && search.length > 0) {
       setMovies((prevMovies: Array<IResult>) => {
         return prevMovies.concat(data.results)
       })
