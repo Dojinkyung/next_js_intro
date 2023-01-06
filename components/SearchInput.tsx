@@ -3,11 +3,13 @@ import React, { useMemo, useState } from 'react'
 import debounce from 'debounce'
 import { useRecoilState } from 'recoil'
 import { pageState, searchState } from '../recoil/states'
+import { useRouter } from 'next/router'
 
 export default function SearchInput() {
   const [searchBar, setSearchBar] = useState(false)
   const [, setSearch] = useRecoilState(searchState)
   const [, setPageNumber] = useRecoilState(pageState)
+  const router = useRouter()
   const handleSearchbar = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     setSearchBar((prev) => !prev)
@@ -25,7 +27,7 @@ export default function SearchInput() {
   }, [setPageNumber, setSearch])
 
   return (
-    <div className={styles.searchForm}>
+    <div className={router.pathname === '/' ? `${styles.searchForm}` : `${styles.none}`}>
       <form className={!searchBar ? `${styles.none}` : `${styles.form}`} onSubmit={handleSubmitBtn}>
         <div>
           <input className={styles.input} type="text" placeholder="Search Movie." onChange={handleChange} />

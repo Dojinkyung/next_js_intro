@@ -8,7 +8,6 @@ interface Props {
 }
 export default function Detail({ results }: Props) {
   if (results) {
-    console.log(results)
     return (
       <div>
         <Seo title={results.title} />

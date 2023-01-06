@@ -69,3 +69,6 @@
   background-color:transparent;  
   transform: rotate( 180deg );
 }
+.none{
+  display: none !important;  
+}
