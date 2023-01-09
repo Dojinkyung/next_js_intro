@@ -4,6 +4,7 @@ import debounce from 'debounce'
 import { useRecoilState } from 'recoil'
 import { pageState, searchState } from '../recoil/states'
 import { useRouter } from 'next/router'
+import ArrowDown from '../public/arrow-down-svgrepo-com.svg'
 
 export default function SearchInput() {
   const [searchBar, setSearchBar] = useState(false)
@@ -37,7 +38,7 @@ export default function SearchInput() {
         </div>
       </form>
       <button className={searchBar ? `${styles.rotate}` : `${styles.searchbardownBTN}`} onClick={handleSearchbar}>
-        <img src="../arrow-down-svgrepo-com.svg" />
+        <ArrowDown />
       </button>
     </div>
   )

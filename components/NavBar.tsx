@@ -2,14 +2,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../styles/navBar.module.css'
 import SearchInput from './SearchInput'
-
+import VideoImg from '../public/video-movie-svgrepo-com.svg'
 export default function NavBar() {
   const router = useRouter()
   return (
     <nav className={styles.nav}>
       <div className={styles.links}>
         <Link href="/">
-          <img src="../video-movie-svgrepo-com.svg" />
+          <VideoImg className={styles.videoImg} />
         </Link>
         <Link href="/">
           <a className={router.pathname === '/' ? `${styles.active}` : ''}>Home</a>

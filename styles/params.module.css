@@ -1,15 +1,31 @@
+.titleAndFav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .title{
     padding-left:20px;
     font-size: 30px;
+}
+.heart{
+    width: 30px;
+    height: 30px;
+    margin:5px;
+    right:4px;
+    fill: #aaaaaa;
+    
+}
+.fav{
+    fill:#ff9500;
 }
 .mainInfo{
     display: flex;
     flex-direction: row; 
 }
 .mainInfo img{
-    border-radius: 12px;
     height:450px;
-    margin:0px 0px 0px 20px; 
+    margin:0px 0px 0px 20px;
+    border-radius: 12px; 
 }  
 .mainInfo dt{
     font-size: 18px;
@@ -17,7 +33,7 @@
 }
 .mainInfo dl{
     display:flex;
+    margin:0px 20px 20px 20px;
     flex-direction: column;
-    justify-content: center;
-    margin:0px 20px 20px 20px; 
+    justify-content: center; 
 }
