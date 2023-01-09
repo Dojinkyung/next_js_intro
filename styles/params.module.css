@@ -27,6 +27,19 @@
     margin:0px 0px 0px 20px;
     border-radius: 12px; 
 }  
+.noImg{ 
+    display: block;
+    width:250px;
+    height:430px;
+    margin:0px 0px 0px 20px;
+    border-radius: 12px;
+    border-radius: 12px;
+    padding-top:100px;
+    background-color:orange;
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+}
 .mainInfo dt{
     font-size: 18px;
     font-weight: 400;

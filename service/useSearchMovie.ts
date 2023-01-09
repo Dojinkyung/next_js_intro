@@ -2,6 +2,7 @@ import getData from './getData'
 import { useEffect, useState } from 'react'
 import { IResult, IRootObject } from '../types/result'
 import { useQuery } from 'react-query'
+import store from 'store'
 
 const useSearchMovie = (search: string, page: number) => {
   const [movies, setMovies] = useState<IResult[]>([])
@@ -25,8 +26,14 @@ const useSearchMovie = (search: string, page: number) => {
   }, [search])
   useEffect(() => {
     if (data !== undefined && search.length > 0) {
+      const tmp: IResult[] = Array.from(data.results)
+      tmp.map((movieID: IResult) =>
+        store.get('fav').find((fav: IResult) => fav.id === movieID.id)
+          ? Object.assign(movieID, { fav: true })
+          : Object.assign(movieID, { fav: false }),
+      )
       setMovies((prevMovies: Array<IResult>) => {
-        return prevMovies.concat(data.results)
+        return prevMovies.concat(tmp)
       })
       setHasMore(data.results.length > 0)
       setTotalResult(data.total_results)

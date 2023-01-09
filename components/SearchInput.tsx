@@ -5,6 +5,7 @@ import { useRecoilState } from 'recoil'
 import { pageState, searchState } from '../recoil/states'
 import { useRouter } from 'next/router'
 import ArrowDown from '../public/arrow-down-svgrepo-com.svg'
+import store from 'store'
 
 export default function SearchInput() {
   const [searchBar, setSearchBar] = useState(false)
@@ -23,6 +24,9 @@ export default function SearchInput() {
       event.preventDefault()
       setSearch(event.target.value.trim())
       setPageNumber(1)
+      if (!store.get('fav')) {
+        store.set('fav', [])
+      }
     }
     return debounce(debounceSearch, 800)
   }, [setPageNumber, setSearch])

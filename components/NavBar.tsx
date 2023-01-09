@@ -9,7 +9,9 @@ export default function NavBar() {
     <nav className={styles.nav}>
       <div className={styles.links}>
         <Link href="/">
-          <VideoImg className={styles.videoImg} />
+          <a>
+            <VideoImg className={styles.videoImg} />
+          </a>
         </Link>
         <Link href="/">
           <a className={router.pathname === '/' ? `${styles.active}` : ''}>Home</a>

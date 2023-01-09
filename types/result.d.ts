@@ -6,6 +6,7 @@ export interface IRootObject {
 }
 
 export interface IResult {
+  fav?: boolean
   homepage: string
   adult: boolean
   backdrop_path: string

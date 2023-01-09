@@ -16,10 +16,13 @@ export default function Detail({ results }: Props) {
           <h4 className={styles.title}>{results.title}</h4>
           <HeartSolidImage className={styles.heart} />
         </div>
-
         <section className={styles.mainInfo}>
           <a href={`${results.homepage}`}>
-            <img src={`https://image.tmdb.org/t/p/w500${results.poster_path}`} />
+            {results.poster_path !== null ? (
+              <img src={`https://image.tmdb.org/t/p/w500${results.poster_path}`} />
+            ) : (
+              <div className={styles.noImg}>{results.title}</div>
+            )}
           </a>
           <dl>
             <dt>Runtime</dt>

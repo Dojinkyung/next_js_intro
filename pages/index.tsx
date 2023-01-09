@@ -5,7 +5,6 @@ import { Carousel } from '../components/Carousel'
 import { Items } from '../components/Items'
 import Seo from '../components/Seo'
 import { pageState, searchState } from '../recoil/states'
-
 import useSearchMovie from '../service/useSearchMovie'
 import styles from '../styles/index.module.css'
 import { IResult } from '../types/result'
