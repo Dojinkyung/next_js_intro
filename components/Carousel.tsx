@@ -2,19 +2,21 @@ import styles from '../styles/carousel.module.css'
 import { useEffect, useState } from 'react'
 import { Items } from './Items'
 import { IResult } from '../types/result'
+import useCarousel from '../service/useCarousel'
+
 interface Props {
-  results: Array<IResult>
+  results: IResult[]
 }
 export const Carousel = ({ results }: Props) => {
   const show = 4
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [length, setLength] = useState(results.length)
-
+  const [carouselMovie, setCarouselMovie] = useState<IResult[]>()
+  const data = useCarousel(results)
   useEffect(() => {
-    setLength(results.length)
-  }, [results.length])
+    setCarouselMovie(data)
+  }, [data])
   const next = () => {
-    if (currentIndex < length - show) {
+    if (currentIndex < results?.length - show) {
       setCurrentIndex((prevState) => prevState + 1)
     }
   }
@@ -31,15 +33,15 @@ export const Carousel = ({ results }: Props) => {
             &lt;
           </button>
         )}
-        {currentIndex < length - show && (
+        {currentIndex < results?.length - show && (
           <button onClick={next} className={styles.rightArrow}>
             &gt;
           </button>
         )}
         <div className={styles.carouselContentWrapper}>
           <div className={styles.carouselContent} style={{ transform: `translateX(-${currentIndex * (100 / show)}%)` }}>
-            {results ? (
-              results.map((movie) => <Items key={movie.id} movie={movie} />)
+            {carouselMovie ? (
+              carouselMovie.map((movie) => <Items key={movie.id} movie={movie} />)
             ) : (
               <div className={styles.noResults}>No Results</div>
             )}

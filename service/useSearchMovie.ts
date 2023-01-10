@@ -19,7 +19,6 @@ const useSearchMovie = (search: string, page: number) => {
       cacheTime: Infinity,
     },
   )
-  console.log(movies)
   useEffect(() => {
     setMovies([])
     setTotalResult(0)
