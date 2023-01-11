@@ -34,12 +34,10 @@ export default function SearchInput() {
   return (
     <div className={router.pathname === '/' ? `${styles.searchForm}` : `${styles.none}`}>
       <form className={!searchBar ? `${styles.none}` : `${styles.form}`} onSubmit={handleSubmitBtn}>
-        <div>
-          <input className={styles.input} type="text" placeholder="Search Movie." onChange={handleChange} />
-          <button className={styles.button} type="submit">
-            검색
-          </button>
-        </div>
+        <input className={styles.input} type="text" placeholder="Search Movie." onChange={handleChange} />
+        <button className={styles.button} type="submit">
+          검색
+        </button>
       </form>
       <button className={searchBar ? `${styles.rotate}` : `${styles.searchbardownBTN}`} onClick={handleSearchbar}>
         <ArrowDown />

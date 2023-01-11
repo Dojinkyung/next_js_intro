@@ -3,15 +3,19 @@ import store from 'store'
 import styles from '../styles/favorite.module.css'
 import { Items } from '../components/Items'
 import { IResult } from '../types/result'
+import { useEffect, useState } from 'react'
 export default function Favorite() {
-  const movies = store.get('fav') || []
+  const [favMovies, setFavMovies] = useState<IResult[]>([])
+  useEffect(() => {
+    setFavMovies(store.get('fav'))
+  }, [])
   return (
     <div>
       <Seo title="favorite" />
-      <h1 className={styles.big}>Favorite Movies({movies?.length})</h1>
+      <h1 className={styles.big}>Favorite Movies({favMovies.length})</h1>
       <ul className={styles.favMovies}>
-        {movies.length > 0 ? (
-          movies.map((movie: IResult) => {
+        {favMovies.length > 0 ? (
+          favMovies.map((movie: IResult) => {
             return (
               <li key={movie.id}>
                 <Items movie={movie} />
@@ -19,7 +23,7 @@ export default function Favorite() {
             )
           })
         ) : (
-          <div className={styles.noResults}>No Results</div>
+          <li className={styles.noResults}>No Results</li>
         )}
       </ul>
     </div>

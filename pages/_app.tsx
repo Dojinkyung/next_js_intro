@@ -9,7 +9,7 @@ const queryClient = new QueryClient()
 export default function MyApp({ Component, pageProps }: AppProps<{ dehydratedState: DehydratedState }>) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps?.dehydratedState}>
+      <Hydrate state={pageProps.dehydratedState}>
         <RecoilRoot>
           <Layout>
             <Component {...pageProps} />

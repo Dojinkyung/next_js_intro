@@ -37,7 +37,7 @@ export default function Detail({ results }: Props) {
             </dd>
             <dt>Genres</dt>
             <dd className={styles.searchResults}>
-              {results.genres ? results.genres.map((info) => <li key={info.id}>{info.name}</li>) : null}
+              {results.genres ? results.genres.map((info) => <p key={info.id}>{info.name}</p>) : null}
             </dd>
           </dl>
         </section>

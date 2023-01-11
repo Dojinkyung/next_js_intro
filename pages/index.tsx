@@ -36,7 +36,6 @@ export default function Home({ results }: Props) {
       <div className={styles.carousel}>
         <Carousel results={results} />
       </div>
-
       <h2 className={styles.search}>Search Results ({totalResult})</h2>
       <ul className={styles.searchResults}>
         {movies.length > 0 ? (
@@ -55,7 +54,7 @@ export default function Home({ results }: Props) {
             )
           })
         ) : (
-          <div className={styles.noResults}>No Results</div>
+          <li className={styles.noResults}>No Results</li>
         )}
       </ul>
     </div>
