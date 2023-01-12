@@ -2,7 +2,7 @@ import Seo from '../../components/Seo'
 import { IResult } from '../../types/result'
 import axios from 'axios'
 import styles from '../../styles/params.module.css'
-import HeartSolidImage from '../../public/heart-like-solid-svgrepo-com.svg'
+import { FavBtn } from '../../components/FavBtn'
 
 interface Props {
   results: IResult
@@ -14,7 +14,7 @@ export default function Detail({ results }: Props) {
         <Seo title={results.title} />
         <div className={styles.titleAndFav}>
           <h4 className={styles.title}>{results.title}</h4>
-          <HeartSolidImage className={styles.heart} />
+          <FavBtn movie={results} />
         </div>
         <section className={styles.mainInfo}>
           <a href={`${results.homepage}`}>
