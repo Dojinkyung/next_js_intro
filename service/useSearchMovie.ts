@@ -3,11 +3,14 @@ import { useEffect, useState } from 'react'
 import { IResult, IRootObject } from '../types/result'
 import { useQuery } from 'react-query'
 import store from 'store'
+import { useRecoilState } from 'recoil'
+import { pageState } from '../recoil/states'
 
 const useSearchMovie = (search: string, page: number) => {
   const [movies, setMovies] = useState<IResult[]>([])
   const [hasMore, setHasMore] = useState(true)
   const [totalResult, setTotalResult] = useState<number>(0)
+  const [pageNumber, setPageNumber] = useRecoilState(pageState)
 
   const { data } = useQuery<IRootObject>(
     ['getData', search, page],
@@ -22,7 +25,13 @@ const useSearchMovie = (search: string, page: number) => {
   useEffect(() => {
     setMovies([])
     setTotalResult(0)
-  }, [search])
+    setPageNumber(1)
+  }, [setPageNumber, search])
+  useEffect(() => {
+    if (pageNumber === 1) {
+      setMovies([])
+    }
+  }, [pageNumber])
   useEffect(() => {
     if (data !== undefined && search.length > 0) {
       const tmp: IResult[] = Array.from(data.results)
@@ -31,6 +40,7 @@ const useSearchMovie = (search: string, page: number) => {
           ? Object.assign(movieID, { fav: true })
           : Object.assign(movieID, { fav: false }),
       )
+
       setMovies((prevMovies: Array<IResult>) => {
         return prevMovies.concat(tmp)
       })

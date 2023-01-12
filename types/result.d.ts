@@ -30,6 +30,3 @@ export interface Igenres {
   id: number
   name: string
 }
-export interface IParams {
-  [id: number, title: string]
-}

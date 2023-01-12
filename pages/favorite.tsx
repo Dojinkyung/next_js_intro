@@ -4,11 +4,15 @@ import styles from '../styles/favorite.module.css'
 import { Items } from '../components/Items'
 import { IResult } from '../types/result'
 import { useEffect, useState } from 'react'
+import { pageState } from '../recoil/states'
+import { useRecoilState } from 'recoil'
 export default function Favorite() {
+  const [, setPageNumber] = useRecoilState(pageState)
   const [favMovies, setFavMovies] = useState<IResult[]>([])
   useEffect(() => {
     setFavMovies(store.get('fav'))
-  }, [])
+    setPageNumber(1)
+  }, [setPageNumber])
   return (
     <div>
       <Seo title="favorite" />
