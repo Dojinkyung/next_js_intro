@@ -3,18 +3,20 @@ import { IResult } from '../../types/result'
 import axios from 'axios'
 import styles from '../../styles/params.module.css'
 import { FavBtn } from '../../components/FavBtn'
+import useMovieDetail from '../../service/useMovieDetail'
 
 interface Props {
   results: IResult
 }
 export default function Detail({ results }: Props) {
+  const data = useMovieDetail(results)
   if (results) {
     return (
       <div>
         <Seo title={results.title} />
         <div className={styles.titleAndFav}>
           <h4 className={styles.title}>{results.title}</h4>
-          <FavBtn movie={results} />
+          <FavBtn movie={data} />
         </div>
         <section className={styles.mainInfo}>
           <a href={`${results.homepage}`}>
