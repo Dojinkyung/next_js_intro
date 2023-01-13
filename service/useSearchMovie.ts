@@ -10,7 +10,7 @@ const useSearchMovie = (search: string, page: number) => {
   const [movies, setMovies] = useState<IResult[]>([])
   const [hasMore, setHasMore] = useState(true)
   const [totalResult, setTotalResult] = useState<number>(0)
-  const [pageNumber, setPageNumber] = useRecoilState(pageState)
+  const [pageNumber] = useRecoilState(pageState)
 
   const { data } = useQuery<IRootObject>(
     ['getData', search, page],
@@ -24,12 +24,11 @@ const useSearchMovie = (search: string, page: number) => {
   )
   useEffect(() => {
     setMovies([])
-    setTotalResult(0)
-    setPageNumber(1)
-  }, [setPageNumber, search])
+  }, [search])
   useEffect(() => {
     if (pageNumber === 1) {
       setMovies([])
+      setTotalResult(0)
     }
   }, [pageNumber])
   useEffect(() => {

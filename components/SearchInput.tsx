@@ -15,9 +15,6 @@ export default function SearchInput() {
     event.preventDefault()
     setSearchBar((prev) => !prev)
   }
-  const handleSubmitBtn = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-  }
   const handleChange = useMemo(() => {
     const debounceSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
@@ -31,11 +28,8 @@ export default function SearchInput() {
 
   return (
     <div className={router.pathname === '/' ? `${styles.searchForm}` : `${styles.none}`}>
-      <form className={!searchBar ? `${styles.none}` : `${styles.form}`} onSubmit={handleSubmitBtn}>
+      <form className={!searchBar ? `${styles.none}` : `${styles.form}`}>
         <input className={styles.input} type="text" placeholder="Search Movie." onChange={handleChange} />
-        <button className={styles.button} type="submit">
-          검색
-        </button>
       </form>
       <button className={searchBar ? `${styles.rotate}` : `${styles.searchbardownBTN}`} onClick={handleSearchbar}>
         <ArrowDown />

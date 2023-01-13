@@ -5,11 +5,19 @@ import { FavBtn } from '../../components/FavBtn'
 import useMovieDetail from '../../service/useMovieDetail'
 import { QueryClient } from 'react-query'
 import getMovieDetail from '../../service/getMovieDetail'
+import { useRecoilState } from 'recoil'
+import { pageState } from '../../recoil/states'
+import { useEffect } from 'react'
 
 interface Props {
   results: IResult
 }
 export default function Detail({ results }: Props) {
+  const [, setPageNumber] = useRecoilState(pageState)
+  useEffect(() => {
+    setPageNumber(1)
+  }, [setPageNumber])
+
   const data = useMovieDetail(results)
   if (results) {
     return (
