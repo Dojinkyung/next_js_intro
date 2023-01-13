@@ -1,9 +1,10 @@
 import Seo from '../../components/Seo'
 import { IResult } from '../../types/result'
-import axios from 'axios'
 import styles from '../../styles/params.module.css'
 import { FavBtn } from '../../components/FavBtn'
 import useMovieDetail from '../../service/useMovieDetail'
+import { QueryClient } from 'react-query'
+import getMovieDetail from '../../service/getMovieDetail'
 
 interface Props {
   results: IResult
@@ -49,7 +50,11 @@ export default function Detail({ results }: Props) {
 }
 
 export async function getServerSideProps({ params: { params } }: any) {
-  const results = await (await axios.get(`http://localhost:3000/api/movies/details/${params[1]}`)).data
+  const id = params[1]
+  const queryClient = new QueryClient()
+  const results: IResult = await queryClient.fetchQuery(['getMovieDetail', id], () =>
+    getMovieDetail(id).then((res) => res.data),
+  )
   return {
     props: {
       results,
