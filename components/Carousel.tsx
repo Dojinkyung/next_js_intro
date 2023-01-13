@@ -3,15 +3,25 @@ import { useEffect, useState } from 'react'
 import { Items } from './Items'
 import { IResult } from '../types/result'
 import useCarousel from '../service/useCarousel'
+import { useRecoilState } from 'recoil'
+import { windowState } from '../recoil/states'
 
 interface Props {
   results: IResult[]
 }
 export const Carousel = ({ results }: Props) => {
-  const show = 4
+  const [windowWidth] = useRecoilState(windowState)
+  let show = 8
   const [currentIndex, setCurrentIndex] = useState(0)
   const [carouselMovie, setCarouselMovie] = useState<IResult[]>()
   const data = useCarousel(results)
+  if (768 < windowWidth && windowWidth <= 878) {
+    show = 6
+  } else if (576 < windowWidth && windowWidth <= 768) {
+    show = 4
+  } else if (windowWidth <= 576) {
+    show = 2
+  }
   useEffect(() => {
     setCarouselMovie(data)
   }, [data])

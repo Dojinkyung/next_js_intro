@@ -35,22 +35,24 @@ export default function Detail({ results }: Props) {
               <div className={styles.noImg}>{results.title}</div>
             )}
           </a>
-          <dl>
-            <dt>Runtime</dt>
-            <dd>{results.runtime} minutes</dd>
-            <dt>Overview</dt>
-            <dd>{results.overview}</dd>
-            <dt>Release Date</dt>
-            <dd>{results.release_date}</dd>
-            <dt>Vote Average / Vote Count</dt>
-            <dd>
-              {results.vote_average} / {results.vote_count}
-            </dd>
-            <dt>Genres</dt>
-            <dd className={styles.searchResults}>
-              {results.genres ? results.genres.map((info) => <p key={info.id}>{info.name}</p>) : null}
-            </dd>
-          </dl>
+          <div>
+            <dl>
+              <dt>Runtime</dt>
+              <dd>{results.runtime} minutes</dd>
+              <dt>Overview</dt>
+              <dd>{results.overview}</dd>
+              <dt>Release Date</dt>
+              <dd>{results.release_date}</dd>
+              <dt>Vote Average / Vote Count</dt>
+              <dd>
+                {results.vote_average} / {results.vote_count}
+              </dd>
+            </dl>
+            <p className={styles.genresTitle}>Genres</p>
+            <ul className={styles.genres}>
+              {results.genres ? results.genres.map((info) => <li key={info.id}>#{info.name}</li>) : null}
+            </ul>
+          </div>
         </section>
       </div>
     )

@@ -6,6 +6,7 @@
 .title{
     padding-left:20px;
     font-size: 30px;
+    width: 80%;
 }
 .heart{
     width: 30px;
@@ -49,4 +50,26 @@
     margin:0px 20px 20px 20px;
     flex-direction: column;
     justify-content: center; 
+}
+.genresTitle{
+    font-size: 18px;
+    margin:0px 20px 20px 20px;
+    font-weight: 400;
+}
+.genres{
+    display:flex;
+    margin:0px 20px 20px 20px;
+    flex-direction: row;
+}
+.genres li{
+    margin-right: 10px;
+}
+@media screen and (max-width: 768px) {
+    .mainInfo{ 
+        flex-direction: column;
+        align-items: center; 
+    }
+    .mainInfo img{
+        margin: 0px;
+    }
 }

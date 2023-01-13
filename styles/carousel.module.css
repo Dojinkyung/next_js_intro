@@ -27,11 +27,31 @@
 .carouselContent::-webkit-scrollbar, .carouselContent::-webkit-scrollbar {
   display: none;
 }
-
 .carouselContent > * {
   flex-shrink: 0;
   flex-grow: 1;
-  width: calc(100% / 4);
+  width: calc(100% / 8);
+}
+@media screen and (max-width: 878px) {
+  .carouselContent > * {
+    flex-shrink: 0;
+    flex-grow: 1;
+    width: calc(100% / 6);
+  }
+}
+@media screen and (max-width: 768px) {
+  .carouselContent > * {
+    flex-shrink: 0;
+    flex-grow: 1;
+    width: calc(100% / 4);
+  }
+}
+@media screen and (max-width: 576px) {
+  .carouselContent > * {
+    flex-shrink: 0;
+    flex-grow: 1;
+    width: calc(100% / 2);
+  }
 }
 .leftArrow, .rightArrow{
   position: absolute;
@@ -52,8 +72,8 @@
 .rightArrow {
   right: 24px;
 }
-@media (hover: none) and (pointer: coarse) {
+/* @media (hover: none) and (pointer: coarse) {
   .leftArrow, .rightArrow {
       display: none;
   }
-}
+} */

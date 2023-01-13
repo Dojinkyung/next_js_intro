@@ -13,3 +13,7 @@ export const FavMovie = atom<IResult[]>({
   key: '#favMovie',
   default: [] || store.get('fav'),
 })
+export const windowState = atom({
+  key: '#windowState',
+  default: 0,
+})
