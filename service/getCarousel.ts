@@ -1,7 +1,7 @@
 import axios from 'axios'
 let ADDRESS = `http://localhost:3000`
 if (typeof window !== 'undefined') {
-  ADDRESS = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://next-js-flax-eta.vercel.app/'
+  ADDRESS = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://searching-movie.vercel.app'
 }
 const getCarousel = () => {
   console.log(ADDRESS)
