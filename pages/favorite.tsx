@@ -16,7 +16,7 @@ export default function Favorite() {
   return (
     <div>
       <Seo title="favorite" />
-      <h1 className={styles.big}>Favorite Movies({favMovies?.length})</h1>
+      <h1 className={styles.big}>Favorite Movies({favMovies?.length || 0})</h1>
       <ul className={styles.favMovies}>
         {favMovies?.length > 0 ? (
           favMovies.map((movie: IResult) => {
