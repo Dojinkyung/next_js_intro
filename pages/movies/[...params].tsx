@@ -30,6 +30,7 @@ export default function Detail({ results }: Props) {
         <section className={styles.mainInfo}>
           <a href={`${results.homepage}`}>
             {results.poster_path !== null ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img src={`https://image.tmdb.org/t/p/w500${results.poster_path}`} alt={results.title} />
             ) : (
               <div className={styles.noImg}>{results.title}</div>
@@ -58,8 +59,10 @@ export default function Detail({ results }: Props) {
     )
   }
 }
-
-export async function getServerSideProps({ params: { params } }: any) {
+interface Params {
+  params: { params: [title: string, id: number] }
+}
+export async function getServerSideProps({ params: { params } }: Params) {
   const id = params[1]
   const queryClient = new QueryClient()
   const results: IResult = await queryClient.fetchQuery(['getMovieDetail', id], () =>

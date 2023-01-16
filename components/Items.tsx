@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router'
 import { IResult } from '../types/result'
 import styles from '../styles/items.module.css'
