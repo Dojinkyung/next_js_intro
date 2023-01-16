@@ -30,7 +30,7 @@ export default function Detail({ results }: Props) {
         <section className={styles.mainInfo}>
           <a href={`${results.homepage}`}>
             {results.poster_path !== null ? (
-              <img src={`https://image.tmdb.org/t/p/w500${results.poster_path}`} />
+              <img src={`https://image.tmdb.org/t/p/w500${results.poster_path}`} alt={results.title} />
             ) : (
               <div className={styles.noImg}>{results.title}</div>
             )}

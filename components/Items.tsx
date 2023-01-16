@@ -15,7 +15,11 @@ export const Items = ({ movie }: Props) => {
     <div key={movie.id} onClick={() => onClick({ id: movie.id, title: movie.original_title })}>
       {movie.poster_path !== null ? (
         <div className={styles.movie}>
-          <img className={styles.poster} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+          <img
+            className={styles.poster}
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
           <FavBtn movie={movie} />
         </div>
       ) : (
