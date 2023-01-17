@@ -16,8 +16,9 @@ const useSearchMovie = (search: string, page: number) => {
     ['getData', search, page],
     () => getData(search, page).then((res) => res.data),
     {
+      enabled: search.length > 0,
       retry: 0,
-      refetchOnWindowFocus: false,
+      refetchOnWindowFocus: true,
       staleTime: Infinity,
       cacheTime: Infinity,
     },
